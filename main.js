@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("console.log(\"Connected!!!\");\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+eval("const container = document.querySelector(\".container\")\r\n\r\ncontainer.innerHTML = `\r\n    <header id=\"header\">\r\n        <h1>What's the weather like</h1>\r\n        <input type=\"text\" placeholder=\"Your city here\"/>\r\n        <button>Submit</button>\r\n    </header>\r\n`;\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
 
 /***/ })
 
