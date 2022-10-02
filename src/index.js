@@ -1,11 +1,33 @@
-const container = document.querySelector(".container")
+import { pageLoad } from "./modules/onPageLoad";
+import { weatherData } from "./modules/weather";
+import { view } from "./modules/view";
 
-container.innerHTML = `
-    <header id="header">
-        <h1>What's the weather like</h1>
-        <div>
-            <input type="text" placeholder="Your city here"/>
-            <button>Submit</button>
-        </div>
-    </header>
-`;
+
+const display = (() => {
+    const form = document.querySelector(".form");
+    const btn = document.querySelector("#btn");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+    });
+
+    // button
+    btn.addEventListener("click", async () => {
+        const displayedBox = document.querySelector(".displayedResultBox");
+        displayedBox.style.display = "block";
+
+        const city = document.querySelector("#cityName");
+        const input = document.querySelector("#city-choice");
+        city.innerText = input.value;
+
+        // display nothing if the city is not provided
+        if(input.value === "") {
+            displayedBox.style.display = "none";
+        };
+        const weather = await weatherData.getData(input.value);
+        view.setSearchResult(weather);
+    })
+
+
+})();
+
